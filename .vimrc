@@ -14,6 +14,10 @@ filetype on
 filetype plugin on
 filetype indent on
 
+:set cursorline    " enable the horizontal line
+:set cursorcolumn  " enable the vertical line
+highlight CursorLine   cterm=NONE ctermbg=black ctermfg=NONE guibg=black guifg=NONE
+highlight CursorColumn cterm=NONE ctermbg=black ctermfg=NONE guibg=black guifg=NONE
 
 " reload files changed outside vim
 set autoread         
@@ -72,7 +76,7 @@ end
 set incsearch        " find the next match as we type the search
 set hlsearch         " hilight searches by default
 " use ESC to remove search higlight
-nnoremap <esc> :noh<return><esc>
+"nnoremap <esc> :noh<return><esc>
  
 " most of the time I should use ` instead of ' but typing it with my keyabord
 " is a pain, so just toggle them
@@ -129,16 +133,6 @@ let jshint2_command = '/usr/local/lib/node_modules/jshint/bin'
 hi clear SpellBad
 hi SpellBad cterm=underline,bold  ctermfg=red 
 hi Search cterm=NONE ctermfg=grey ctermbg=blue
+hi MatchParen cterm=underline,bold ctermbg=none ctermfg=gray
 
-"Change cursor based on insert or nav mode"
-if has("autocmd")
-  au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-  au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-  au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-endif
 
-"remap arrow keys
-map <Up> <NOP>
-map <Down> <NOP>
-map <Left> <NOP>
-map <Right> <NOP>
